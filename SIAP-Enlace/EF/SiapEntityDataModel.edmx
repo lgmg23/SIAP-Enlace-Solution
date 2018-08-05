@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="siapgapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_area">
+          <Key>
+            <PropertyRef Name="Id_Area" />
+          </Key>
+          <Property Name="Id_Area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_marca">
+          <Key>
+            <PropertyRef Name="Id_Marca" />
+          </Key>
+          <Property Name="Id_Marca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_nombreequipo">
+          <Key>
+            <PropertyRef Name="Id_NombreEquipo" />
+          </Key>
+          <Property Name="Id_NombreEquipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="NombreEquipo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_producto">
+          <Key>
+            <PropertyRef Name="Id_Producto" />
+          </Key>
+          <Property Name="Id_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="int" Nullable="false" />
+          <Property Name="Ubicacion" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
+          <Property Name="Marca" Type="int" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Serie" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Sistema Operativo" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
+          <Property Name="Adquisicion" Type="date" Nullable="false" />
+          <Property Name="Factura" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="NActivo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Garantia" Type="date" Nullable="false" />
+          <Property Name="NombreEquipo" Type="int" Nullable="false" />
+          <Property Name="Caracteristicas" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Proveedor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_proveedor">
+          <Key>
+            <PropertyRef Name="Id_Proveedor" />
+          </Key>
+          <Property Name="Id_Proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Proveedor" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_so">
+          <Key>
+            <PropertyRef Name="Id_SO" />
+          </Key>
+          <Property Name="Id_SO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SO" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_tipo">
+          <Key>
+            <PropertyRef Name="Id_Tipo" />
+          </Key>
+          <Property Name="Id_Tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ubicacion">
+          <Key>
+            <PropertyRef Name="Id_Ubicacion" />
+          </Key>
+          <Property Name="Id_Ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Resguardo" Type="varchar" MaxLength="400" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Area">
+          <End Role="t_area" Type="Self.t_area" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_area">
+              <PropertyRef Name="Id_Area" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca">
+          <End Role="t_marca" Type="Self.t_marca" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_marca">
+              <PropertyRef Name="Id_Marca" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NombreEquipo">
+          <End Role="t_nombreequipo" Type="Self.t_nombreequipo" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_nombreequipo">
+              <PropertyRef Name="Id_NombreEquipo" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="NombreEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proveedor">
+          <End Role="t_proveedor" Type="Self.t_proveedor" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_proveedor">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SO">
+          <End Role="t_so" Type="Self.t_so" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_so">
+              <PropertyRef Name="Id_SO" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Sistema Operativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo">
+          <End Role="t_tipo" Type="Self.t_tipo" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_tipo">
+              <PropertyRef Name="Id_Tipo" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ubicacion">
+          <End Role="t_ubicacion" Type="Self.t_ubicacion" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_ubicacion">
+              <PropertyRef Name="Id_Ubicacion" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Role="t_usuario" Type="Self.t_usuario" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_usuario">
+              <PropertyRef Name="Id_Usuario" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="siapgapModelStoreContainer">
+          <EntitySet Name="t_area" EntityType="Self.t_area" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_marca" EntityType="Self.t_marca" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_nombreequipo" EntityType="Self.t_nombreequipo" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_producto" EntityType="Self.t_producto" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_proveedor" EntityType="Self.t_proveedor" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_so" EntityType="Self.t_so" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_tipo" EntityType="Self.t_tipo" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_ubicacion" EntityType="Self.t_ubicacion" Schema="siapgap" store:Type="Tables" />
+          <EntitySet Name="t_usuario" EntityType="Self.t_usuario" Schema="siapgap" store:Type="Tables" />
+          <AssociationSet Name="FK_Area" Association="Self.FK_Area">
+            <End Role="t_area" EntitySet="t_area" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca" Association="Self.FK_Marca">
+            <End Role="t_marca" EntitySet="t_marca" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NombreEquipo" Association="Self.FK_NombreEquipo">
+            <End Role="t_nombreequipo" EntitySet="t_nombreequipo" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proveedor" Association="Self.FK_Proveedor">
+            <End Role="t_proveedor" EntitySet="t_proveedor" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SO" Association="Self.FK_SO">
+            <End Role="t_so" EntitySet="t_so" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo" Association="Self.FK_Tipo">
+            <End Role="t_tipo" EntitySet="t_tipo" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ubicacion" Association="Self.FK_Ubicacion">
+            <End Role="t_ubicacion" EntitySet="t_ubicacion" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+            <End Role="t_usuario" EntitySet="t_usuario" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="siapgapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_area">
+          <Key>
+            <PropertyRef Name="Id_Area" />
+          </Key>
+          <Property Name="Id_Area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_Area" FromRole="t_area" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_marca">
+          <Key>
+            <PropertyRef Name="Id_Marca" />
+          </Key>
+          <Property Name="Id_Marca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_Marca" FromRole="t_marca" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_nombreequipo">
+          <Key>
+            <PropertyRef Name="Id_NombreEquipo" />
+          </Key>
+          <Property Name="Id_NombreEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreEquipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_NombreEquipo" FromRole="t_nombreequipo" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_producto">
+          <Key>
+            <PropertyRef Name="Id_Producto" />
+          </Key>
+          <Property Name="Id_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Ubicacion" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="Marca" Type="Int32" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Serie" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sistema_Operativo" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="SByte" Nullable="false" />
+          <Property Name="Adquisicion" Type="DateTime" Nullable="false" />
+          <Property Name="Factura" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NActivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Garantia" Type="DateTime" Nullable="false" />
+          <Property Name="NombreEquipo" Type="Int32" Nullable="false" />
+          <Property Name="Caracteristicas" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Proveedor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_area" Relationship="Self.FK_Area" FromRole="t_producto" ToRole="t_area" />
+          <NavigationProperty Name="t_marca" Relationship="Self.FK_Marca" FromRole="t_producto" ToRole="t_marca" />
+          <NavigationProperty Name="t_nombreequipo" Relationship="Self.FK_NombreEquipo" FromRole="t_producto" ToRole="t_nombreequipo" />
+          <NavigationProperty Name="t_proveedor" Relationship="Self.FK_Proveedor" FromRole="t_producto" ToRole="t_proveedor" />
+          <NavigationProperty Name="t_so" Relationship="Self.FK_SO" FromRole="t_producto" ToRole="t_so" />
+          <NavigationProperty Name="t_tipo" Relationship="Self.FK_Tipo" FromRole="t_producto" ToRole="t_tipo" />
+          <NavigationProperty Name="t_ubicacion" Relationship="Self.FK_Ubicacion" FromRole="t_producto" ToRole="t_ubicacion" />
+          <NavigationProperty Name="t_usuario" Relationship="Self.FK_Usuario" FromRole="t_producto" ToRole="t_usuario" />
+        </EntityType>
+        <EntityType Name="t_proveedor">
+          <Key>
+            <PropertyRef Name="Id_Proveedor" />
+          </Key>
+          <Property Name="Id_Proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Proveedor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_Proveedor" FromRole="t_proveedor" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_so">
+          <Key>
+            <PropertyRef Name="Id_SO" />
+          </Key>
+          <Property Name="Id_SO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_SO" FromRole="t_so" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_tipo">
+          <Key>
+            <PropertyRef Name="Id_Tipo" />
+          </Key>
+          <Property Name="Id_Tipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_Tipo" FromRole="t_tipo" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_ubicacion">
+          <Key>
+            <PropertyRef Name="Id_Ubicacion" />
+          </Key>
+          <Property Name="Id_Ubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ubicacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_Ubicacion" FromRole="t_ubicacion" ToRole="t_producto" />
+        </EntityType>
+        <EntityType Name="t_usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Resguardo" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_producto" Relationship="Self.FK_Usuario" FromRole="t_usuario" ToRole="t_producto" />
+        </EntityType>
+        <Association Name="FK_Area">
+          <End Role="t_area" Type="Self.t_area" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_area">
+              <PropertyRef Name="Id_Area" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca">
+          <End Role="t_marca" Type="Self.t_marca" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_marca">
+              <PropertyRef Name="Id_Marca" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NombreEquipo">
+          <End Role="t_nombreequipo" Type="Self.t_nombreequipo" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_nombreequipo">
+              <PropertyRef Name="Id_NombreEquipo" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="NombreEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proveedor">
+          <End Role="t_proveedor" Type="Self.t_proveedor" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_proveedor">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SO">
+          <End Role="t_so" Type="Self.t_so" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_so">
+              <PropertyRef Name="Id_SO" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Sistema_Operativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo">
+          <End Role="t_tipo" Type="Self.t_tipo" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_tipo">
+              <PropertyRef Name="Id_Tipo" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ubicacion">
+          <End Role="t_ubicacion" Type="Self.t_ubicacion" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_ubicacion">
+              <PropertyRef Name="Id_Ubicacion" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Role="t_usuario" Type="Self.t_usuario" Multiplicity="1" />
+          <End Role="t_producto" Type="Self.t_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_usuario">
+              <PropertyRef Name="Id_Usuario" />
+            </Principal>
+            <Dependent Role="t_producto">
+              <PropertyRef Name="Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="siapgapEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_area" EntityType="Self.t_area" />
+          <EntitySet Name="t_marca" EntityType="Self.t_marca" />
+          <EntitySet Name="t_nombreequipo" EntityType="Self.t_nombreequipo" />
+          <EntitySet Name="t_producto" EntityType="Self.t_producto" />
+          <EntitySet Name="t_proveedor" EntityType="Self.t_proveedor" />
+          <EntitySet Name="t_so" EntityType="Self.t_so" />
+          <EntitySet Name="t_tipo" EntityType="Self.t_tipo" />
+          <EntitySet Name="t_ubicacion" EntityType="Self.t_ubicacion" />
+          <EntitySet Name="t_usuario" EntityType="Self.t_usuario" />
+          <AssociationSet Name="FK_Area" Association="Self.FK_Area">
+            <End Role="t_area" EntitySet="t_area" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca" Association="Self.FK_Marca">
+            <End Role="t_marca" EntitySet="t_marca" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NombreEquipo" Association="Self.FK_NombreEquipo">
+            <End Role="t_nombreequipo" EntitySet="t_nombreequipo" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proveedor" Association="Self.FK_Proveedor">
+            <End Role="t_proveedor" EntitySet="t_proveedor" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SO" Association="Self.FK_SO">
+            <End Role="t_so" EntitySet="t_so" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo" Association="Self.FK_Tipo">
+            <End Role="t_tipo" EntitySet="t_tipo" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ubicacion" Association="Self.FK_Ubicacion">
+            <End Role="t_ubicacion" EntitySet="t_ubicacion" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+            <End Role="t_usuario" EntitySet="t_usuario" />
+            <End Role="t_producto" EntitySet="t_producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="siapgapModelStoreContainer" CdmEntityContainer="siapgapEntities">
+          <EntitySetMapping Name="t_area">
+            <EntityTypeMapping TypeName="siapgapModel.t_area">
+              <MappingFragment StoreEntitySet="t_area">
+                <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_marca">
+            <EntityTypeMapping TypeName="siapgapModel.t_marca">
+              <MappingFragment StoreEntitySet="t_marca">
+                <ScalarProperty Name="Id_Marca" ColumnName="Id_Marca" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_nombreequipo">
+            <EntityTypeMapping TypeName="siapgapModel.t_nombreequipo">
+              <MappingFragment StoreEntitySet="t_nombreequipo">
+                <ScalarProperty Name="Id_NombreEquipo" ColumnName="Id_NombreEquipo" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="NombreEquipo" ColumnName="NombreEquipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_producto">
+            <EntityTypeMapping TypeName="siapgapModel.t_producto">
+              <MappingFragment StoreEntitySet="t_producto">
+                <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Sistema_Operativo" ColumnName="Sistema Operativo" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Adquisicion" ColumnName="Adquisicion" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="NActivo" ColumnName="NActivo" />
+                <ScalarProperty Name="Garantia" ColumnName="Garantia" />
+                <ScalarProperty Name="NombreEquipo" ColumnName="NombreEquipo" />
+                <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_proveedor">
+            <EntityTypeMapping TypeName="siapgapModel.t_proveedor">
+              <MappingFragment StoreEntitySet="t_proveedor">
+                <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_so">
+            <EntityTypeMapping TypeName="siapgapModel.t_so">
+              <MappingFragment StoreEntitySet="t_so">
+                <ScalarProperty Name="Id_SO" ColumnName="Id_SO" />
+                <ScalarProperty Name="SO" ColumnName="SO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_tipo">
+            <EntityTypeMapping TypeName="siapgapModel.t_tipo">
+              <MappingFragment StoreEntitySet="t_tipo">
+                <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ubicacion">
+            <EntityTypeMapping TypeName="siapgapModel.t_ubicacion">
+              <MappingFragment StoreEntitySet="t_ubicacion">
+                <ScalarProperty Name="Id_Ubicacion" ColumnName="Id_Ubicacion" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_usuario">
+            <EntityTypeMapping TypeName="siapgapModel.t_usuario">
+              <MappingFragment StoreEntitySet="t_usuario">
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Resguardo" ColumnName="Resguardo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
