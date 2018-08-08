@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SIAP_Enlace.Model;
 using SIAP_Enlace.EF;
+using SIAP_Enlace.Model;
+//using SIAP_Enlace.EF;
 
 namespace SIAP_Enlace
 {
@@ -31,19 +32,20 @@ namespace SIAP_Enlace
 
         public void button3_Click(object sender, EventArgs e)
         {
-            string usuario = textBox1.Text.ToString();
+            string usuario = textBox1.Text.ToString();           
             if(usuario.Length >= 4)
             {
                 List<BusquedaModel> busquedaMList = new List<BusquedaModel>();
                 siapgapEntities _context = new siapgapEntities();
                 var dgview = new DataSet();
-                var usuarios = _context.t_usuario.Where(x => x.Nombre.Contains(usuario)).ToList();
+                var usuarios = _context.t_usuario.Where(x => x.Usuario.Contains(usuario)).ToList();
                 if(usuarios.Count >= 1)
                 {
                     foreach (var element in usuarios)
                     {
                         BusquedaModel busquedaM = new BusquedaModel();
-                        busquedaM.Nombre = element.Nombre;
+                        busquedaM.IdUsuario = element.Id_Usuario;
+                        busquedaM.Nombre = element.Usuario;
                         busquedaMList.Add(busquedaM);                        
                     }
                     var busquedaForm = new Busqueda(busquedaMList);
@@ -53,12 +55,11 @@ namespace SIAP_Enlace
                 {
                     MessageBox.Show("No se encontraron registros.", "Error", MessageBoxButtons.OK);
                 }
-            }
+            }            
             else
             {
                 MessageBox.Show("Debe ingresar un usuario, o al menos 4 caracteres.", "Error", MessageBoxButtons.OK);
             }
-            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -68,8 +69,14 @@ namespace SIAP_Enlace
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var usuarioDetalle = new UsuarioDetalle();
-            usuarioDetalle.Show();
+            //var usuarioDetalle = new UsuarioDetalle();
+            //usuarioDetalle.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var equipoAgregar = new EquipoAgregar();
+            equipoAgregar.Show();
         }
     }
 }

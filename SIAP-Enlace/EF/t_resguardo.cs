@@ -12,18 +12,12 @@ namespace SIAP_Enlace.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class t_area
+    public partial class t_resguardo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public t_area()
-        {
-            this.t_producto = new HashSet<t_producto>();
-        }
+        public int IdResguardo { get; set; }
+        public int Usuario { get; set; }
+        public string Ruta { get; set; }
     
-        public int Id_Area { get; set; }
-        public string Area { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<t_producto> t_producto { get; set; }
+        public virtual t_usuario t_usuario { get; set; }
     }
 }

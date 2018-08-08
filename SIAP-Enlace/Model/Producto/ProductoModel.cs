@@ -18,12 +18,12 @@ namespace SIAP_Enlace.Model.Producto
         public string Serie { get; set; }
         public virtual SOModel SO { get; set; }
         public virtual AreaModel Area{ get; set; }
-        public Boolean Estado { get; set; }
+        public sbyte Estado { get; set; }
         public DateTime Adquisicion { get; set; }
         public string Factura { get; set; }
         public string NActivo { get; set; }
         public DateTime Garantia { get; set; }
-        public virtual NombreEquipoModel NombreEquipo { get; set; }
+        public string NombreEquipo { get; set; }
         public string Caracteristicas { get; set; }
         public virtual ProveedorModel Proveedor { get; set; }
     }

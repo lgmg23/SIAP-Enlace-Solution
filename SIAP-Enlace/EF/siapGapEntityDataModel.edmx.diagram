@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7040c6f5fe9d419bac4f787e5476c3ce" Name="Diagram1">
+        <EntityTypeShape EntityType="siapgapModel.t_almacen" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_area" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_marca" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_producto" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_proveedor" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_resguardo" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_so" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_tipo" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_ubicacion" Width="1.5" PointX="3.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="siapgapModel.t_usuario" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="siapgapModel.FK_AlmacenMarca" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_AlmacenProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_AlmacenSistemaOperativo" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_AlmacenTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_SO" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_Ubicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="siapgapModel.FK_ResguardoUsuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -59,9 +59,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 405);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Arrastra tus archivos.";
+            this.label1.Text = "Guardar archivos.";
             // 
             // dataGridView1
             // 
@@ -99,6 +99,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Generar Resguardo";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -152,6 +153,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UsuarioDetalle";
             this.Text = "Usuario";
+            this.Load += new System.EventHandler(this.UsuarioDetalle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
